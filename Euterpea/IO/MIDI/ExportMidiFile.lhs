@@ -165,9 +165,9 @@ by the following process:
 > to7Bits :: (Integral a, Show a) => a -> Byte.ByteString
 > to7Bits =  Byte.pack . map (fromIntegral . binStrToNum . reverse) .
 >            fixBinStrs . map (padTo 7 . reverse). reverse . 
->            breakBinStrs 7 . reverse . padTo 8 . numToBinStr
+>            breakBinStrs 7 . reverse . padTo 7 . numToBinStr
 
-Pad a binary string to be a multiple of 8 bits:
+Pad a binary string to be a multiple of n bits:
 
 > padTo :: Int -> String -> String
 > padTo i xs = if length xs `mod` i == 0 then xs else padTo i ('0':xs)
